@@ -1,5 +1,5 @@
 // main.js
-import {getOrders, addNewOrder} from './orders.js'
+import {getOrders} from './orders.js'
 
 document.getElementById("app").innerHTML = `
 <h1>Peanut's Pizza Parlor</h1>
@@ -54,10 +54,22 @@ document.getElementById("app").innerHTML = `
   <div id="orders"></div>
 </div>
 `;
+const orders = getOrders()
 
 const displayOrders = () => {
-  const orders = getOrders()
-  // Add logic here to put the orders on the DOM
+  let HTML = '';
+  for (const order of orders) {
+    HTML += `
+    <div class="order">
+    <p>Order #${order.id}</p>
+    <p>Crust: ${order.crust}</p>
+    <p>Toppings: ${order.toppings}</p>
+    <p>Instructions: ${order.instructions}</p>
+    </div>
+    `
+  }
+  document.getElementById('app').innerHTML = HTML;
+
 };
 
 displayOrders()
