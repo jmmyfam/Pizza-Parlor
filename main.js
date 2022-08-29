@@ -68,7 +68,7 @@ const displayOrders = () => {
     </div>
     `
   }
-  document.getElementById('app').innerHTML = HTML;
+  document.getElementById('orders').innerHTML = HTML;
 
 };
 
