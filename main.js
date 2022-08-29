@@ -57,6 +57,7 @@ document.getElementById("app").innerHTML = `
 const orders = getOrders()
 
 const displayOrders = () => {
+  // logic to display orders on DOM
   let HTML = '';
   for (const order of orders) {
     HTML += `
@@ -73,3 +74,29 @@ const displayOrders = () => {
 };
 
 displayOrders()
+
+document.addEventListener("click", (e) => {
+  if (e.target.id === "submitOrder") {
+    // Need logic to get all the values from the form, 
+		// format them into an object and add that object to the `orders` array in `orders.js`
+    const newId = orders.length + 1;
+    const newCrust = document.querySelector("input[name=crust]:checked")?.value;
+    const newToppings = [];
+    const selectedToppings = document.querySelectorAll("input[name=toppings]:checked");
+    selectedToppings.forEach(topping => {newToppings.push(topping.value)});
+    const newInstructions = document.getElementById('specialInstructions')?.value;
+    const newOrder = {
+      id: newId,
+      crust: newCrust,
+      toppings: newToppings,
+      instructions: newInstructions
+    };
+    orders.push(newOrder);
+    displayOrders()
+  }
+})
+
+document.addEventListener("stateChanged", event => {
+  
+})
+  
