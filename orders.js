@@ -15,6 +15,10 @@ const orders = [
 ]
 
 export const getOrders = () => {
+  // logic to return a copy or orders 
     return orders.map(order => ({...order}))
-}
+};
 
+export const addNewOrders = (order) => {
+ return newOrder
+};

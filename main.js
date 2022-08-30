@@ -1,5 +1,5 @@
 // main.js
-import {getOrders} from './orders.js'
+import {getOrders, addNewOrders} from './orders.js'
 
 document.getElementById("app").innerHTML = `
 <h1>Peanut's Pizza Parlor</h1>
@@ -11,7 +11,7 @@ document.getElementById("app").innerHTML = `
       <label for="thinCrust">Thin</label>
       <input id="thinCrust" name="crust" type="radio" value="thin" />
       <label for="handTossedCrust">Hand Tossed</label>
-      <input id="handTossedCrust" name="crust" type="radio" value="HandTossed" />
+      <input id="handTossedCrust" name="crust" type="radio" value="Hand Tossed" />
       <label for="handTossedCrust">Stuffed</label>
       <input id="stuffed" name="crust" type="radio" value="stuffed" />
       </div>
@@ -78,12 +78,12 @@ displayOrders()
 document.addEventListener("click", (e) => {
   if (e.target.id === "submitOrder") {
     // Need logic to get all the values from the form, 
-    const newId = orders.length + 1;
-    const newCrust = document.querySelector("input[name=crust]:checked")?.value;
-    const newToppings = [];
-    const selectedToppings = document.querySelectorAll("input[name=toppings]:checked");
+    let newId = orders.length + 1;
+    let newCrust = document.querySelector("input[name=crust]:checked")?.value;
+    let newToppings = [];
+    let selectedToppings = document.querySelectorAll("input[name=toppings]:checked");
     selectedToppings.forEach(topping => {newToppings.push(topping.value)});
-    const newInstructions = document.getElementById('specialInstructions')?.value;
+    let newInstructions = document.getElementById('specialInstructions')?.value;
     
     // format them into an object and add that object to the `orders` array in `orders.js'
     const newOrder = {
