@@ -78,13 +78,14 @@ displayOrders()
 document.addEventListener("click", (e) => {
   if (e.target.id === "submitOrder") {
     // Need logic to get all the values from the form, 
-		// format them into an object and add that object to the `orders` array in `orders.js`
     const newId = orders.length + 1;
     const newCrust = document.querySelector("input[name=crust]:checked")?.value;
     const newToppings = [];
     const selectedToppings = document.querySelectorAll("input[name=toppings]:checked");
     selectedToppings.forEach(topping => {newToppings.push(topping.value)});
     const newInstructions = document.getElementById('specialInstructions')?.value;
+    
+    // format them into an object and add that object to the `orders` array in `orders.js'
     const newOrder = {
       id: newId,
       crust: newCrust,
